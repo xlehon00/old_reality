@@ -1,0 +1,379 @@
+{* Latte template *}
+
+{block content}
+{$form->render('begin')}
+
+{* when we click on elements with class 'params', the counting of estates will run *}
+<div style="width: 50%; margin: auto">
+    <div class="dropdown">
+        <div class="dropbtn category" value="{$category->id}">{$category->value}</div>
+        <div class="dropdown-content" id="dropdown-menu" >
+            {foreach $categories as $id => $cat}
+                {continueIf $id == $category->id}
+                <a class="params" href="{link toggleCategory! 'idCategory' => $id}">{$cat}</a>
+            {/foreach}
+        </div>
+    </div>
+    <input type='hidden' name='categoryId' value="{$category->id}"></input>
+    <input type='hidden' name='orderType' value="{$orderType}"></input>
+        
+    <div style="text-align: center">
+        {foreach $orderTypes as $type => $value}
+            <a class="params order-type {if $orderType == $type}active{/if}" 
+                href='' data-order-type="{$type}">
+                {$value}</a>
+        {/foreach}
+    </div>
+    <div class="ui-widget">
+        <label>{$form['autoComplete']->label}</label>
+        <p class="params">{$form['autoComplete']->control}</p>
+    </div>
+    
+    <table>
+        <tr>
+            <td class="search-label">{$form['disposition']->label}</td>
+            <td id="estate-types">
+                {foreach $form['disposition']->items as $key => $label}
+                    <div class="checkboxes" style="width: 200px">
+                        <input type="checkbox" name="disposition[]" value="{$key}" 
+                            {if in_array($key, $form['disposition']->value)}checked{/if}> {$label}
+                    </div>
+                {/foreach}
+            </td>
+        </tr>
+        <tr>
+            <td class="search-label">{$form['state']->label}</td>
+            <td>
+                {foreach $form['state']->items as $key => $label}
+                    <div class="checkboxes" style="width: 200px">
+                        <input type="checkbox" name="state[]" value="{$key}" 
+                        {if in_array($key, $form['state']->value)}checked{/if}> {$label}
+                    </div>
+                {/foreach}
+            </td>
+        </tr>
+
+    </table>
+
+    <div>
+        {file_get_contents('images/czech-republic.svg')|noescape}
+    </div>
+    <table>
+    <div style="display: none">{$form['regionId']->control}</div>
+    {foreach $regions as $region}
+        <tr id="{$region->nuts_code}" style="display: none;">
+            <td class="search-label">{$form[$region->code]->label}</td>
+            <td>
+                {foreach $form[$region->code]->items as $key => $label}
+                    <div class="checkboxes" style="width: 200px">
+                        <input type="checkbox" name="{$region->code}[]" value="{$key}" 
+                        {if in_array($key, $form[$region->code]->value)}checked{/if}> {$label}
+                    </div>
+                {/foreach}
+            </td>
+        </tr>
+    {/foreach}
+    </table>
+    <table>
+    <tr>
+        <td class="search-label">Giá bán</td>
+        <td><span style="margin: 10px;">{$form['priceFrom']->control}</span><span style="margin: 10px">{$form['priceTo']->control}</span></td>
+    </tr>
+    <tr>
+        <td class="search-label">{$form['manifolds']->label}</td>
+        <td>
+            {foreach $form['manifolds']->items as $key => $label}
+                <div class="checkboxes" style="width: 200px">
+                    <input type="checkbox" name="manifolds[]" value="{$key}" 
+                    {if in_array($key, $form['manifolds']->value)}checked{/if}> {$label}
+                </div>
+            {/foreach}
+        </td>
+    </tr>
+    <tr>    
+        <td>
+        <p>Số lượng bất động sản phù hợp: 
+            <span id="estates-count">
+            {if isset($estatesCount)}
+                {$estatesCount}
+            {else}
+                Không có bất động sản phù hợp điều kiện
+            {/if}
+            </span>
+        </p>
+        </td>
+    </tr>
+    <tr>
+        <td class="search-label">{$form['structure']->label}</td>
+        <td>
+            {foreach $form['structure']->items as $key => $label}
+                <div class="checkboxes" style="width: 200px">
+                    <input type="checkbox" name="structure[]" value="{$key}" 
+                    {if in_array($key, $form['structure']->value)}checked{/if}> {$label}
+                </div>
+            {/foreach}
+        </td>
+    </tr>
+    <tr>
+        <td class="search-label">{$form['ownership']->label}</td>
+        <td>
+            {foreach $form['ownership']->items as $key => $label}
+                <div class="checkboxes" style="width: 200px">
+                    <input type="checkbox" name="ownership[]" value="{$key}" 
+                    {if in_array($key, $form['ownership']->value)}checked{/if}> {$label}
+                </div>
+            {/foreach}
+        </td>
+    </tr>
+    <tr>
+        <td class="search-label">Tầng</td>
+        <td>
+            <span style="margin: 10px;">
+                {$form['floorFrom']->control}
+            </span>
+            <span style="margin: 10px">
+                {$form['floorTo']->control}
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td class="search-label">Diện tích sử dụng</td>
+        <td>
+            <span style="margin: 10px;">
+                {$form['areaFrom']->control}
+            </span>
+            <span style="margin: 10px">
+                {$form['areaTo']->control}
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td class="search-label">{$form['timeSinceAddingAd']->label}</td>
+        <td>{$form['timeSinceAddingAd']->control}</td>
+    </table>
+    <div style="height: 50px"></div>
+    <div style="width: 150px; margin: auto">
+        {$form['submit']->control}
+    </div>
+    {$form->render('end')}
+    <div style="height: 80px">
+</div>
+<script type="text/javascript">
+    $(function() {
+        var params = [];  //object for saving all params for counting the estates
+        var elemId = '';
+        var regionId = '';
+        var region = '';
+        /*CZ_JM.addEventListener('mouseover', function() {
+            alert("Mouse over!");
+        });*/
+        $('path').each(function(index, elem) {
+            $(elem).hover(function() {
+                if ($(elem).css('fill') != 'rgb(255, 0, 0)') { //red
+                    $(elem).css('fill', 'rgb(128, 128, 128)');  //grey
+                }
+            });
+          
+            $(elem).mouseout(function() {
+                if ($(elem).css('fill') != 'rgb(255, 0, 0)') {
+                    $(elem).css('fill', 'rgb(255, 255, 255)');
+                }
+            });
+            $(elem).on('click', function() {
+                if ($(elem).css('fill') != 'rgb(255, 0, 0)') {
+                    $(elem).css('fill', 'rgb(255, 0, 0)');
+                } else {
+                    $(elem).css('fill', 'rgb(255, 255, 255)');
+                }
+                elemId = $(elem).attr('id');
+                regionId = elemId.substr(1);
+                region = $('#' + regionId);
+                if ($(region).css('display') == 'none') {
+                    $(region).css('display', 'block');
+                } else {
+                    $(region).css('display', 'none');
+                }
+                $(region).find("input[type='checkbox']").prop('checked', false);
+            });
+        });
+
+        $("input[name='regionId[]']").each(function(index, element) {
+            $(this).attr('data-code', $(this).parent().text());
+            console.log($(this).data('code'));
+        });
+        $('path').on('click', function() {
+            var code = $(this).attr('id').substr(1);
+            var ele = $("input[name='regionId[]'][data-code='" + code + "']");
+            ele.prop('checked', !ele.prop('checked'));
+        });
+
+        $("input, select, path").addClass('params'); //when params are clicked or filled, call counting
+    
+        function initParamsForCounting(params) {  
+            $(params).each(function(i, ele) {
+                var eventCalled = '';
+                if (($(this).is('input') == true && $(this).attr('type') == 'text') 
+                    || $(this).is('select')) {
+                    eventCalled = 'change';
+                } else {
+                    eventCalled = 'click';
+                }
+                $(ele).on(eventCalled, function(event) {
+                    console.log('Event is ' + eventCalled);
+                    var orderTypeClicked = $(this).hasClass('order-type');
+                    if (orderTypeClicked) {
+                        event.preventDefault();
+                        $('.order-type').removeClass('active');
+                        $(this).addClass('active');
+                        $('input[name=orderType]').val($(this).data('order-type'));
+                    }
+                    var formValues = $('form').serializeArray();
+                    console.log(formValues);
+                    //removing autocomplete input, we don't need its content
+                    var index = formValues.findIndex(v => v.name === 'autoComplete');
+                    formValues.splice(index, 1);
+                    $.nette.ajax({
+                        url: {link countEstatesByParams!},
+                        data: formValues,
+                        success: function(payload) {
+                            //console.log(payload.dispositions);
+                            if (orderTypeClicked) {
+                                $('#estate-types').html(payload.dispositions);
+                                initParamsForCounting('#estate-types .params');
+                            }
+                            $('#estates-count').html(payload.estatesCount);
+                            //console.log('Count is ' + payload.count);
+                        }
+                    });
+                });
+            });
+        }
+
+
+        initParamsForCounting($('.params'));
+    });
+
+    $(".dropbtn").click(function() {
+        $(".dropdown-content").toggle();
+    });
+
+    //Change the content of dropdown-content when the category is chosen
+    $(document).on('click', '.dropdown-content a', function(event) {
+        var t0 = performance.now();
+        event.preventDefault();
+        $('.dropdown-content').hide();
+        $.nette.ajax({
+            url: $(this).attr('href'),
+            success: function(payload) {
+                $('#estate-types').html(payload.dispositions);
+                $('#dropdown-menu').html(payload.categories);
+                $('input[name=categoryId]').val(payload.categoryId);
+                var t1 = performance.now();
+                console.log('Count time ' + (t1 - t0) + 'miliseconds');
+            }
+        });
+        $('.dropbtn').html($(this).html());
+    });
+
+    //autocomplete of searching for the address
+    $("input[name='autoComplete']").focus(function() {
+        var url = {link getSpecificAddress!};
+        $(this).autocomplete({
+            minLength: 3,
+            source: function(request, response) {
+                console.log({$districts});
+                var districts = $.ui.autocomplete.filter({$districts}, request.term);
+                console.log(districts);
+                var villages = $.ui.autocomplete.filter({$villages}, request.term);
+                var villageParts = $.ui.autocomplete.filter({$villageParts}, request.term);
+                var streets = $.ui.autocomplete.filter({$streets}, request.term);
+                
+                var splitted = [];
+                var delimiters = [',', ';', ' ', '.', '; '];          
+                var results = getLastResult(districts, villages, villageParts, streets);
+                if (results.length === 0) {
+                    for (var i = 0; i < delimiters.length; i++) {
+                        if (request.term.indexOf(delimiters[i]) >= 0) {
+                            splitted = request.term.split(delimiters[i]);
+                            splitted.forEach(function(item) { item.trim(); });
+                        }
+                    }
+                    //sorting function for the addresses by abcd
+                    var sortingFunction = function(a, b){ 
+                        if (splitted[1][0] === splitted[1][0].toLowerCase()) {
+                            var termLowerCase = splitted[1].toLowerCase();
+                            return a.toLowerCase().indexOf(termLowerCase) - b.toLowerCase().indexOf(termLowerCase)
+                        } else {
+                            var termUpperCase = splitted[1].toUpperCase();
+                            return a.toUpperCase().indexOf(termUpperCase) - b.toUpperCase().indexOf(termUpperCase)
+                        }
+                    };
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(splitted[0]) 
+                            + '.*, .*' + $.ui.autocomplete.escapeRegex(splitted[1]), "i");
+                    
+                    districts = getResultFromRegex({$districts}, matcher, sortingFunction);
+                    villages = getResultFromRegex({$villages}, matcher, sortingFunction);
+                    villageParts = getResultFromRegex({$villageParts}, matcher, sortingFunction);
+                    streets = getResultFromRegex({$streets}, matcher, sortingFunction);
+                    results = getLastResult(districts, villages, villageParts, streets);
+                }
+                
+                results = getOrderedResult(results);
+                response(results.slice(0, 10));  //show only 10 results to response
+            },
+            select: function(event, ui) {
+                event.preventDefault(); //this will prevent inserting ui.item.value to input
+                $("input[name='geologyId']").val(ui.item.value); //code of selected one 
+                $("input[name='geologyType']").val(ui.item.type);
+                $(this).val(ui.item.label); //input will show the label
+            }
+
+        });
+        $(this).attr('autocomplete', 'on');
+    });
+    
+
+    function getLastResult(a, b, c, d) {
+        var results = [];
+        if (a.length < 10) {
+            results = a.concat(b);
+            if (results.length < 10) {
+                results = results.concat(c);
+                if (results.length < 10) {
+                    results = results.concat(d);
+                }
+            }
+        } else {
+            results = a;
+        }
+        return results;
+    }
+    
+    function getResultFromRegex(list, matcher, sortingFunction) {
+        var result = $.grep(list, function(item) {
+                        return matcher.test(item);
+                    }).sort(sortingFunction);
+        return result;
+    }
+    
+    function getOrderedResult(results) {
+        var resultsByDistrict = [];
+        var districtsOrdered = {$districtsOrdered};
+        var checked = [];
+        var pos = 0;
+        for (var i = 0; i < districtsOrdered.length; i++) {
+            for (var j = 0; j < results.length; j++) {
+                var districtRegex = new RegExp("t.*nh \\(th.*nh ph.*\\) " + districtsOrdered[i] + ',', 'g');
+                if ((pos = results[j]['label'].search(districtRegex)) != -1) {
+                    if (checked.indexOf(districtsOrdered[i]) < 0) { //if district is not checked yet
+                        checked.push(districtsOrdered[i]);
+                        resultsByDistrict.push(results[j]);//push the district to result
+                    }
+                } 
+            }
+        }
+        return resultsByDistrict;
+    }
+</script>
+
+</div>

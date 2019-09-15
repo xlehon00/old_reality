@@ -1,0 +1,20 @@
+{* Latte template *}
+
+{block content}
+<table>
+    <tbody>
+        <tr>
+            <td>Số thứ tự</td>
+            <td>Số hợp đồng</td>
+            <td>Tiêu đê</td>
+        </tr>   
+        {var $i = 0}
+        {foreach $estates as $estate}
+            <tr>
+                <td>{$i++}</td>
+                <td>{$estate->internal_number}</td>
+                <td><a href="{link edit 'idEstate' => $estate->id}">{$estate->title}</a></td>
+            </tr>
+        {/foreach}
+    </tbody>
+</table>

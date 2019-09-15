@@ -1,0 +1,20 @@
+{* Latte template *}
+
+{block content}
+<div class="menu-bar">
+  <a class="active" href="{link Homepage:default}"><i class="fa fa-home"></i></a> 
+  <a href="{link EstateSearch:default}"><i class="fa fa-search"></i></a> 
+  <a href="{link EstatesList:default}"><i class="fa fa-envelope"></i></a> 
+  <a href="{link Agent:default}""><i class="fa fa-globe"></i></a>
+  <a href="#"><i class="fa fa-trash"></i></a> 
+</div>
+<div class="menu" style="float:right">
+    <p><span><a href="{link Homepage:showList}">Những bất động sản của tôi</a></span>
+        {if !isset($user) || !$isLogged}
+            <span><a href="{link Sign:in}">Đăng nhập</a> / <a href="{link Sign:up}">(Bạn chưa phải thành viên?) Đăng ký</a></span>
+        {else}
+            <span>{$user->username}<span><a href="{link Sign:out}">  Thoát</a>
+        {/if}
+    </p>
+</div>
+    <div class="clearfix"></div>

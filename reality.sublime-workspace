@@ -1,0 +1,382 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Exce",
+				"exception"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"temp",
+				"template"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/presenters/HomepagePresenter.php",
+			"settings":
+			{
+				"buffer_size": 6220,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 52 files for \"var_dump\"\n\n/home/alex/reality/app/presenters/HomepagePresenter.php:\n   90          $location = $this->geologyModel->getGeoLocationsByGps(50.0914196, 14.4369805);\n   91          foreach ($location as $address) {\n   92:             /*var_dump($address->getSubLocality());\n   93:             var_dump($address->getLocality());\n   94:             var_dump($address->getPolitical());\n   95:                         var_dump($address->getStreetName());\n   96  \n   97:             var_dump($address->getLocationType());\n   98:             //var_dump($address->getAdminLevels()->get());\n   99              echo \"\\n\\n\\n\";*/\n  100          }\n\n6 matches in 1 file\n\n\nSearching 52 files for \"Tracy\"\n\n/home/alex/reality/app/bootstrap.php:\n    6  \n    7  //$configurator->setDebugMode('23.75.345.200'); // enable for your remote IP\n    8: $configurator->enableTracy(__DIR__ . '/../log');\n    9  \n   10  $configurator->setTimeZone('Europe/Prague');\n\n/home/alex/reality/app/presenters/ErrorPresenter.php:\n    5  use Nette;\n    6  use Nette\\Application\\Responses;\n    7: use Tracy\\ILogger;\n    8  \n    9  \n\n2 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 1138,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/forms/EstateFormFactory.php",
+			"settings":
+			{
+				"buffer_size": 20113,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 32.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/alex/reality",
+		"/home/alex/reality/app",
+		"/home/alex/reality/app/forms"
+	],
+	"file_history":
+	[
+		"/home/alex/reality/app/presenters/HomepagePresenter.php",
+		"/home/alex/reality/reality.sublime-project",
+		"/home/alex/reality.sublime-project",
+		"/var/www/www2.slever.cz/app/ProductsModule/model/rabbitmq/EsLoader.php",
+		"/var/www/www2.slever.cz/app/logger.php",
+		"/var/www/www2.slever.cz/libs/Nette/Environment/Environment.php",
+		"/var/www/www2.slever.cz/libs/Nette/Debug/Debug.php",
+		"/var/www/www2.slever.cz/libs/Nette/Utils/Callback.php",
+		"/var/www/www2.slever.cz/libs/Nette/Reflection/FunctionReflection.php",
+		"/var/www/www2.slever.cz/app/ProductsModule/model/Product/ProductSearch.php",
+		"/var/www/www2.slever.cz/app/ProductsModule/model/Product/QueryBuilder.php",
+		"/var/www/www2.slever.cz/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Client.php",
+		"/var/www/www2.slever.cz/app/ProductsModule/model/Product/SearchQuery.php",
+		"/var/www/www2.slever.cz/app/FrontModule/presenters/HomepagePresenter.php",
+		"/var/www/www2.slever.cz/libs/Nette/Reflection/MethodReflection.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/PresenterComponent.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/Presenter.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/Application.php",
+		"/var/www/www2.slever.cz/app/bootstrap.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/IPresenter.php",
+		"/var/www/www2.slever.cz/composer.phar",
+		"/home/alex/slever/app/BackendModule/presenters/BasePresenter.php",
+		"/home/alex/slever/app/BackendModule/presenters/BackendPresenter.php"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 99.0,
+		"where_history":
+		[
+			"/home/alex/reality/app",
+			"/var/www/www2.slever.cz/app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Tracy",
+			"var_dump",
+			"District",
+			"Loading products",
+			"secured",
+			"gallery-next",
+			";}\n",
+			"/**********"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/presenters/HomepagePresenter.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6220,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1590,
+								1590
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1326.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1138,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										256,
+										264
+									],
+									[
+										313,
+										321
+									],
+									[
+										367,
+										375
+									],
+									[
+										434,
+										442
+									],
+									[
+										498,
+										506
+									],
+									[
+										558,
+										566
+									],
+									[
+										869,
+										874
+									],
+									[
+										1081,
+										1086
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								679,
+								679
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 255.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/forms/EstateFormFactory.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1671.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "reality.sublime-project",
+	"replace":
+	{
+		"height": 69.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/project/slever.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

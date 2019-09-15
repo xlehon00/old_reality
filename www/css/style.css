@@ -1,0 +1,318 @@
+body {
+	font-size: 15px;
+	line-height: 1.6;
+	color: #333;
+	background: white;
+}
+
+h1 {
+	color: #3484D2;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#ajax-spinner {
+	margin: 15px 0 0 15px;
+	padding: 13px;
+	background: white url('../images/spinner.gif') no-repeat 50% 50%;
+	font-size: 0;
+	z-index: 123456;
+	display: none;
+}
+
+div.flash {
+	color: black;
+	background: #FFF9D7;
+	border: 1px solid #E2C822;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+a[href^="#error:"] {
+	background: red;
+	color: white;
+}
+
+form th, form td {
+	vertical-align: top;
+	font-weight: normal;
+}
+
+form th {
+	text-align: right;
+}
+
+form .required label {
+	font-weight: bold;
+}
+
+form .error {
+	color: #D00;
+	font-weight: bold;
+}
+
+.vn {
+        font-family: "Source Sans Pro", serif;
+        font-size: 15px;
+}
+
+.step {
+        font-size: 30px;
+}
+
+.re-list > li .estate-basic-info {
+    float: right;
+    width: 175px;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.re-list > li .estate-info {
+    width: 291px;
+    float: left;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.img-rounded {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+.re-list > li .image-link {
+    /*display: block; */
+    line-height: 0;
+    float: left;
+    margin: 0 22px 0 11px;
+    max-width: 179px;
+    position: relative;
+}
+
+ .re-list > li {
+    padding: 22px 0;
+    list-style-type: none;
+    border-top: 1px solid #a8bfcf;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+
+.clear {
+     clear: both
+}
+
+.images_list {
+    width: 200px;
+    height: 150px;
+}
+
+.dropdown {
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+.dropbtn {
+    background-color: white;
+    margin: 0 auto;
+    width: 84px;
+    color: red;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: grey;
+}
+
+.dropdown-content {
+    display: none;
+    left: 50%;
+    margin-left: -80px;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+.dropbtn:hover .dropdown-content {display: block;}
+
+.dropdown .dropbtn:hover {background-color: #4CAF50; color: white;}
+
+.menu-bar {
+    width: 100%; /* Full-width */
+    background-color: #555; /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+}
+
+.menu-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36px; /* Increased font size */
+}
+
+.menu-bar a:hover {
+    background-color: #000; /* Add a hover color */
+}
+
+.active {
+    background-color: #4CAF50; /* Add an active/current color */
+}
+
+#modal-client-form {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* 15% from the top and centered */
+    margin-top: 60px;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.modal-close {
+    color: red;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.agent-img {
+    margin: 5px;
+}
+
+.agent-infos {
+    width: 50%;
+    float: left;
+}
+
+.contact-agent-form {
+    width: 50%;
+    float: right;
+}
+
+.image-span {
+    border: 1px solid black;
+    position: relative;
+    float: left;
+    margin: 3px 3px 3px 0;
+    width: 150px;
+    height: 150px;
+}
+
+.image-item {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.delete-image {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+}
+
+#sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.i-background {
+    color: white;
+}
+
+.warning {
+    float: left;
+    margin: 6px 12px 20px 0;
+}
+
+.checkboxes {
+    display: inline-block;
+    width: 180px;
+}
+
+#estateContainer label {
+    width: 180px;
+}
+
+.flat-adding-infos {
+    display: none;
+}
+
+.search-label {
+    width: 120px;
+}
+
+.order-type {
+    display: inline-block;
+    min-width: 150px;
+    padding: 0px 15px;
+    text-align: center;
+}
+
+.order-type.active {
+    background: red;
+    color: white;
+    cursor: default;
+}

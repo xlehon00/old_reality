@@ -1,0 +1,547 @@
+{block content}
+	<div id="estateContainer" style="width: 70%; margin: 0 auto">
+	{*<input type="file" name="upload">
+	<a name="import" href="{link import!}"><button>Import</button></a>
+	<script>
+		$('[name=import]').click(function() {
+			$.nette.ajax({
+				url: $(this).attr('href'),
+				success: function() {
+					console.log('Import OK');
+				}
+			})
+		});
+	</script>*}
+	{snippet estateInfos}
+	{$form->render('begin')}
+	<table>
+		<tr>
+			<td>{$form['title']->label}</td></td>
+			<td>{$form['title']->control}</td></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top">{$form['description']->label}</td>
+			<td>{$form['description']->control}</td>
+		</tr>
+		<tr>
+			<td>{$form['agentId']->label}</td>
+			<td>{$form['agentId']->control}</td>
+		</tr>
+		<tr>
+			<td>{$form['companyId']->label}</td>
+			<td>{$form['companyId']->control}</td>
+		</tr>
+		<tr>
+			<td>{$form['orderType']->label}</td>
+			<td>{$form['orderType']->control}</td>
+		</tr>
+		<tr>
+			<td>{$form['contractType']->label}</td>
+			<td>{$form['contractType']->control}</td>
+		</tr>
+		<tr {if $edit}style="display: none"{/if}>
+			<td>{$form['categoryId']->label}</td>
+			<td>{$form['categoryId']->control}</td>
+		</tr>
+		
+		<tr class="cat3">
+			<td>{$form['projectCategoryId']->label}</td>
+			<td>{$form['projectCategoryId']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['type']->label}</td>
+			<td n:snippet="type" class="ajax">{$form['type']->control}</td>
+		</tr>
+		<tr class="cat2">
+			<td>{$form['houseDisposition']->label}</td>
+			<td>{$form['houseDisposition']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['state']->label}</td>
+			<td>{$form['state']->control}</td>
+		</tr>
+		<tr>
+			<td>{$form['ownership']->label}</td>
+			<td>{$form['ownership']->control}</td>
+		</tr>
+		{snippet location}
+			<tr>
+				<td>{$form['regionId']->label}</td>
+				<td>{$form['regionId']->control}</td>
+			</tr>
+			<tr>
+				<td>{$form['districtId']->label}</td>
+				<td>{$form['districtId']->control}</td>
+			</tr>
+			<tr>
+				<td>{$form['villageId']->label}</td>
+				<td>{$form['villageId']->control}</td>
+			</tr>
+			<tr>
+				<td>{$form['villagePartId']->label}</td>
+				<td>{$form['villagePartId']->control}</td>
+			</tr>
+			<tr>
+				<td>{$form['streetId']->label}</td>
+				<td>{$form['streetId']->control}</td>
+			</tr>
+		{/snippet}
+		<tr class="cat3">
+			<td>{$form['projectDateOfSale']->label}</td>
+			<td>{$form['projectDateOfSale']->control}</td>
+		</tr>
+		<tr class="cat3">
+			<td>{$form['projectDateOfFinish']->label}</td>
+			<td>{$form['projectDateOfFinish']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['gpsLatitude']->label}</td>
+			<td>{$form['gpsLatitude']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['gpsLongitude']->label}</td>
+			<td>{$form['gpsLongitude']->control}</td>
+		</tr>
+		<tr class="cat1 cat2 cat4 cat5 cat6">
+			<td>{$form['price']->label}</td>
+			<td>{$form['price']->control}</td>
+		</tr>
+		<tr class="cat1 cat2 cat4 cat5 cat6">
+			<td>{$form['dealUnit']->label}</td>
+			<td>{$form['dealUnit']->control}</td>
+		</tr>
+		<tr class="cat1 cat2 cat4 cat5 cat6">
+			<td>{$form['currency']->label}</td>
+			<td>{$form['currency']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['noteToPrice']->label}</td>
+			<td>{$form['noteToPrice']->control}</td>
+		</tr>
+		<tr class="cat1 cat2 cat4 cat5 cat6">
+			<td>{$form['overallArea']->label}</td>
+			<td>{$form['overallArea']->control}/m<sup>2</sup></td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['dateOfMoving']->label}</td>
+			<td>{$form['dateOfMoving']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['yearOfReconstruction']->label}</td>
+			<td>{$form['yearOfReconstruction']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['yearOfApproval']->label}</td>
+			<td>{$form['yearOfApproval']->control}</td>
+		</tr>
+		<tr class="cat1 cat2">
+			<td>{$form['yearOfBuildingUp']->label}</td>
+			<td>{$form['yearOfBuildingUp']->control}</td>
+		</tr>
+		<tr class='flat-adding-infos'>
+			<td>{$form['flatAddingInfos']->label}</td>
+			<td>
+				{foreach $form['flatAddingInfos']->items as $key => $label}
+					<div class="checkboxes">
+    					<input type="checkbox" name="flatAddingInfos[]" value="{$key}"> {$label}
+					</div>
+				{/foreach}
+			</td>
+		</tr>
+		{foreach $manifoldsByCat as $categoryId => $manifolds}
+			<tbody class="adding-infos-{$categoryId}" 
+				{if $categoryId != $form['categoryId']->getValue() || !$edit}style="display: none"{/if}>
+			{foreach $manifolds as $manifoldId => $manifold}
+				<tr class="cat1 cat2">
+					{if $manifold['disposition'] == 'checkbox'}
+						<td><label>{$manifold['name']}</label></td>
+						<td><input type="checkbox" name="{$manifold['attributeName']}" 
+								value="{$manifoldId}" {if $form[$manifold['attributeName']]->value}checked{/if}></td>
+					{else}
+						<td>{$form[$manifold['attributeName']]->label}</td>
+						<td>{$form[$manifold['attributeName']]->control}
+							{if $manifold['disposition'] == 'text'} /m<sup>2</sup>{/if}</td>
+					{/if}
+				</tr>
+			{/foreach}
+			</tbody>
+		{/foreach}
+	</table>
+		<p><strong>Thông tin về trang thiết bị sinh hoạt và hệ thống dịch vụ</strong></p>
+		<table>
+			{if !$form['categoryId']->getValue() || $form['categoryId']->getValue() == 1 || $form['categoryId']->getValue() == 2}
+			{foreach $parentManifolds as $manifold}
+				<tr class="cat1 cat2">
+					<td>{$form[$manifold['name']]->label}</td>
+					<td>
+					{if $manifold['disposition'] == 'checkbox-list'}
+						{foreach $form[$manifold['name']]->items as $key => $label}
+							<div class="checkboxes" style="width: 200px">
+		    					<input type="checkbox" name="{$manifold['name']}[]" value="{$key}" 
+		    					{if in_array($key, $form[$manifold['name']]->value)}checked{/if}> {$label}
+							</div>
+						{/foreach}
+					{else}
+						{$form[$manifold['name']]->control}
+					{/if}
+					</td>
+				</tr>
+			{/foreach}
+			{/if}
+			<tr>
+				<td>{$form['images']->label}</td>
+				<td>{$form['images']->control}</td>
+			</tr>
+			<tr n:snippet='imagesContainer'>
+			 	{if isset($images) && count($images) > 0}
+				<td colspan='3'">
+					<ul id="sortable">
+						{for $i = 1; $i <= count($images); $i++}
+							<li class="image-span">
+								<span style="position: absolute;" title='Xóa ảnh' class="fa-stack delete-image">
+									<i class="fa fa-circle fa-stack-2x i-background"></i>
+									<i class="fa fa-close fa-stack-1x"></i>			
+								</span>
+								<img value="{$i}" name={$images[$i]['name']} class="image-item" 
+									src="{$images[$i]['data']|dataStream}">
+							</li>
+						{/for}
+					</ul>
+				</td>
+				{/if}
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>{$form['save']->control}</td>
+			</tr>
+		</table>
+	{$form->render('end')}
+	
+	<div id="dialog-confirm" style="display: none;" title='Bạn thực sự muốn xóa ảnh?'>
+		<p><span class="fa fa-warning warning"></span>Bạn thực sự muốn xóa ảnh?</p>
+	</div>
+
+<script>
+		$(function() {
+			var modal = $("#modal-client-form");
+			$("input[name='addNewClient']").click(function() {
+					modal.toggle();
+			});
+			
+			$(".modal-close").click(function() {
+					modal.hide();
+			});
+			
+			modal.click(function(event) {
+					if (event.target == this) {
+							$(this).hide();
+					}
+			});
+			
+			function showItemsByCategory(categoryId) {	
+				if (!categoryId) { //if category id is not set 
+					categoryId = 1; //default
+				}
+				var items = $('input, select');			
+				$("[class*='cat']").hide();
+				$("[class*='cat']").find(items).attr('disabled', true);
+				$('.cat' + categoryId).find(items).attr('disabled', false);
+				$('.cat' + categoryId).show();
+			}
+			showItemsByCategory($('[name=categoryId]').val());
+
+			$(document).on('change', '[name=categoryId]', function() {
+				var categoryId = $(this).val();
+				var items = $('input, select');		
+				//first we close the previous category div
+				showItemsByCategory(categoryId);
+				$("[class*='adding-infos-']").hide();
+				$("[class*='adding-infos-']").find(items).attr('disabled', true);
+				$('.adding-infos-' + categoryId).find(items).attr('disabled', false);
+				$('.adding-infos-' + categoryId).show(); //show the actual category adding infos
+				fetchTypes();
+			});
+
+			$("[name*='dateOf'],[name*=projectDateOf").datepicker({
+				monthNamesShort: {$monthNamesShort},
+				dayNames: {$dayNames},
+				dayNamesMin: {$dayNamesMin},
+				dateFormat: {$dateFormat},
+				changeMonth: true,
+				changeYear: true,
+				nextText: "Tháng sau",
+				prevText: "Tháng trước"
+			});
+
+		});
+		
+		function confirm(input)
+		{
+			$('#dialog-confirm').dialog({
+				resizable: false,
+				height: "auto",
+				width: 400,
+				modal: true,
+				buttons: {
+					'Có': function() {
+						deleteImage(input);
+						$(this).dialog('close');
+					}, 
+					'Không': function() {
+						$(this).dialog('close');
+					}
+				}
+
+			})
+			$('#dialog-confirm').css('display', 'block');
+		}
+
+
+
+		$("[name='orderType']").change(function() {
+			console.log('orderType is changed');
+			if ($("[name='categoryId']").val() != '') {
+				console.log('Category is set');
+				fetchTypes();
+			} else {
+				console.log('Category is not set');
+			}
+		});
+
+		$('#sortable').sortable({
+			stop: function(event, ui) {
+				var images = $(this).find('img');
+				var idEstate = {$form['id']->getValue()};
+				var imageValues = {};
+				for (var i = 0; i < images.length; i++) {
+					imageValues[$(images[i]).attr('name')] = i + 1;
+				}
+				$.nette.ajax({
+					url: {link sortImages!},
+					data: {'idEstate': idEstate, 'images':imageValues},
+				});
+			}
+		});
+		$('#sortable').disableSelection();
+		
+		function fetchTypes() {
+			var categoryId = $("[name='categoryId']").val();
+			var orderType = $("[name='orderType']").val();
+			var form = $("[name='categoryId']").closest('form');
+			//var values = form.serialize();
+			var url = {link fetchTypes!};
+			$.nette.ajax({
+				type: 'POST',
+				url: url, 
+				data: {'categoryId': categoryId, 'orderType': orderType},
+				success: function(payload) {
+					if ('types' in payload) {
+						$("[name='type']").html(payload.types);
+					}
+					if ('dispositions' in payload) {
+						$("[name='houseDisposition']").html(payload.dispositions);
+					}
+				}
+			});
+		}
+	</script>
+	<script src="{$basePath}/js/estates.js?v=4"></script>
+	{/snippet}
+	</div>
+	<div style="height: 200px">
+	</div>
+<script>
+	function deleteImage(input) {
+		var url = {link deleteImage!};
+		var idEstate = {$form['id']->getValue()};
+		var idImage = input.siblings('img').attr('value');
+		$.nette.ajax({
+			type: 'GET',
+			url: url,
+			data: {'idEstate': idEstate, 'idImage': idImage}
+
+		})
+	}
+
+	//Remove the image from list
+	$(document).on('click', '.delete-image', function() {
+		confirm($(this));
+	});
+
+
+
+	//change values of district by region
+	$(document).on('change', "[name='regionId']", function() {
+		var url = {link getDistrictsByRegion} + '?idRegion=' + $(this).find(":selected").val();
+		console.log(url);
+		var selectedVal = $(this).val();
+
+		$.nette.ajax({
+			url: url,
+			success: function(response) {
+				var items = JSON.parse(response);
+				fillSelectBox(items, 'districtId');	
+				$(this).val(selectedVal);
+			}
+		});
+	});
+
+	//fill village input when we get info about the district
+	function getVillagesByDistrict() {		
+		$("select[name='districtId']").change(function() {
+			var url = {link getVillagesByDistrict} + '?idDistrict=' + $(this).val();
+			console.log(url);
+			var selectedVal = $(this).val();
+			$("[name='district']").val(selectedVal);
+			$.nette.ajax({
+				url: url,
+				success: function(response) {
+					var items = JSON.parse(response);
+					var villages = [];
+					for (var villageId in items) {
+						villages[villageId] = items[villageId];
+					}
+					villages.sort(compareByName);
+					fillSelectBox(villages, 'villageId');	//we fill the autocomplete to input 'village'
+				}
+			});
+		});
+	}
+
+	//fill village part input when we get info about the village
+	function getVillagePartsByVillage() {		
+		$("select[name='villageId']").change(function() {
+			var url= {link getVillagePartsByVillage} + '?idVillage=' + $(this).val();
+
+			console.log(url);
+			var selectedVal = $(this).val();
+			$("[name='village']").val(selectedVal);
+				$.nette.ajax({
+				url: url,
+				success: function(response) {
+					var items = JSON.parse(response);
+					var villageParts = [];
+					var streets = [];
+					var allVillageParts = items['villageParts'];
+					var allStreets = items['streets'];
+					for (var villagePartId in allVillageParts) {
+						villageParts[villagePartId] = allVillageParts[villagePartId];
+					}
+					for (var streetId in allStreets) {
+						streets[streetId] = allStreets[streetId];
+					}
+					streets.sort(compareByName);
+					villageParts.sort(compareByName);
+					fillSelectBox(villageParts, 'villagePartId');	//we fill the autocomplete to input 'village'
+					fillSelectBox(streets, 'streetId')
+				},
+				error: function(jqXHR, textStatus) {
+					console.log(jqXHR + textStatus);
+				}
+			});
+		});
+	}
+
+	function compareByName(a, b) {
+		if (a < b) {
+			return -1;
+		} 
+		if (a > b) {
+			return 1;
+		} 
+		return 0;
+	}
+
+	//file street input when we get info about village
+	function getStreetsByVillage() {
+		$("select[name='villageId']").change(function() {
+			var url = {link getStreetsByVillage} + '?idVillage=' + $(this).val();
+			var selectedVal = $(this).val();
+			$("[name='village']").val(selectedVal);
+
+			console.log(url);
+			$.nette.ajax({
+				url: url,
+				success: function(response) {
+					fillSelectBox(response, 'streetId');	//we fill the autocomplete to input 'village'
+					$(this).val(selectedVal);
+				}
+			});
+		});
+	}
+
+	$("#frm-estateForm").submit(function(event) {
+		//event.preventDefault();
+		if (validateForm() == false) {
+			return false;
+		} 
+		var form = $(this).closest('form');
+		console.log(form.serializeArray());
+		$.nette.ajax({
+			type: 'POST',
+			url: $(this).attr('action'),
+			data: form.serializeArray(),
+		});
+	});
+
+	function validateForm() {
+		if ($('[name=price]').length && $('[name=price]').attr('disabled') == false) {
+			var price = parseInt($('[name=price]').val());
+			if (!Number.isInteger(price) || price <= 0) {
+				alert('Gía bán phải là số lớn hơn 0');
+				$('[name=price]').focus();
+				return false;
+			}   
+		}
+		if ($('[name=categoryId]').val() == 3 && $('[name=companyId]').val() == '') {
+			alert('Bạn cần chọn công ty');
+			$('[name=companyId]').focus();
+			return false;
+		}  
+	}
+
+	function fillSelectBox(items, input) {
+		//if success we add autocomplete to district input
+		var select = $("[name='" + input + "']");
+		select.chosen();
+		var source = [];
+		for (var i in items) {	
+			var item = {'value': i, 'text': items[i]}; //value is id of district, label is name
+			source.push($("<option/>", item));
+		}
+		
+		select.empty().append(source);
+	  	select.trigger("chosen:updated");
+	  	if (input == 'districtId') {
+	  		getVillagesByDistrict();
+	  	} else {
+	  		getVillagePartsByVillage();
+	  		//getStreetsByVillage();
+	  	}
+	  	$('.chosen-container-single .chosen-single').css('height', '30px');
+	}
+
+	$('[name=gpsLatitude],[name=gpsLongitude]').change(function() {
+		getLocation();
+	});
+
+	function getLocation() {
+		if ($('[name=gpsLongitude').val() != '' 
+			&& (parseFloat($('[name=gpsLongitude]')) !== NaN) 
+			&& ($('[name=gpsLatitude').val() != '' 
+				&& (parseFloat($('[name=gpsLongitude]')) !== NaN))) {
+			var latitude = parseFloat($('[name=gpsLatitude').val());
+			var longitude = parseFloat($('[name=gpsLongitude').val());
+			var url = {link getLocation!};
+			$.nette.ajax({
+				url: url,
+				data: {'latitude': latitude, 'longitude': longitude}
+			});
+		}
+	}
+
+	
+</script>
+
+	

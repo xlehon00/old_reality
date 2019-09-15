@@ -1,0 +1,196 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Exce",
+				"exception"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"temp",
+				"template"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 32.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/var/www/www2.slever.cz/app/ProductsModule/model/rabbitmq/EsLoader.php",
+		"/var/www/www2.slever.cz/app/logger.php",
+		"/var/www/www2.slever.cz/libs/Nette/Environment/Environment.php",
+		"/var/www/www2.slever.cz/libs/Nette/Debug/Debug.php",
+		"/var/www/www2.slever.cz/libs/Nette/Utils/Callback.php",
+		"/var/www/www2.slever.cz/libs/Nette/Reflection/FunctionReflection.php",
+		"/var/www/www2.slever.cz/app/ProductsModule/model/Product/ProductSearch.php",
+		"/var/www/www2.slever.cz/app/ProductsModule/model/Product/QueryBuilder.php",
+		"/var/www/www2.slever.cz/vendor/elasticsearch/elasticsearch/src/Elasticsearch/Client.php",
+		"/var/www/www2.slever.cz/app/ProductsModule/model/Product/SearchQuery.php",
+		"/var/www/www2.slever.cz/app/FrontModule/presenters/HomepagePresenter.php",
+		"/var/www/www2.slever.cz/libs/Nette/Reflection/MethodReflection.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/PresenterComponent.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/Presenter.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/Application.php",
+		"/var/www/www2.slever.cz/app/bootstrap.php",
+		"/var/www/www2.slever.cz/libs/Nette/Application/IPresenter.php",
+		"/var/www/www2.slever.cz/composer.phar",
+		"/home/alex/slever/app/BackendModule/presenters/BasePresenter.php",
+		"/home/alex/slever/app/BackendModule/presenters/BackendPresenter.php"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "HomepagePresenter.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

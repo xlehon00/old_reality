@@ -1,0 +1,27 @@
+{block content}
+    <ul class="re-list" id="main-list">
+            {foreach $estates as $estate}
+                    <li>
+                            <a href="" class="image-link"><img class="img-rounded" src="{$baseUri}/images/thumbs/{$estate->id}/{$estate->id}_1.jpg"/></a>
+                            <div class="estate-info">
+                                <h3><a href="{link EstateDetail:default, 'id' => $estate->id}">{$estate->title}</a></h3>
+                                <strong class="price">{$estate->price} {$currencies[$estate->currency]}/
+                                {if isset($estate->dealUnit)}
+                                 <small>{$dealUnits[$estate->dealUnit]}</small>
+                                {/if}
+                                 </strong>
+                                <div class="estate-status">{$estate->status}</div>
+                                <div class="estate-location">
+                                    <p><strong>{$estate->region}</strong>,</p>
+                                    <p>{$estate->district}, {$estate->village}, {$estate->street}</p>
+                                </div>
+                            </div>
+                            <div class="estate-basic-info">
+                                <ul class="vn">
+                                    <li><b>ID</b> bất động sản{$estate->id}</li>
+                                    <li><a href="{link EstateDetail:default, 'id' => $estate->id}">chi tiết về bất động sản</a></li>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                    </li>
+            {/foreach}
